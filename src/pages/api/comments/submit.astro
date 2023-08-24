@@ -1,0 +1,23 @@
+---
+import { addComment } from "../../../comments";
+import Comment from "../../../components/Comment.astro";
+
+// if (Astro.request.method !== "POST") {
+//   throw new Error();
+// }
+const formData = await Astro.request.formData();
+const text = formData.get("comment")?.toString();
+const author = formData.get("author")?.toString();
+if (!text || !author) {
+  throw new Error("test");
+}
+const comment = {
+  text: text,
+  date: new Date(),
+  author,
+};
+
+addComment(comment);
+---
+
+<Comment {comment} />

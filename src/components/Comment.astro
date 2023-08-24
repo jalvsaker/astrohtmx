@@ -1,0 +1,17 @@
+---
+import type { Comment } from "../comments";
+
+interface Props {
+  comment: Comment;
+}
+const { comment } = Astro.props;
+---
+
+<div class="comment">
+  <div>{comment.text}</div>
+  <div>{comment.author} - {comment.date.toLocaleString("no")}</div>
+  <button hx-delete={"/api/comments/" + comment.id} hx-target="closest .comment"
+    >Delete</button
+  >
+  <hr />
+</div>

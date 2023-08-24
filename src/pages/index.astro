@@ -1,15 +1,35 @@
 ---
+import { getAllComments } from "../comments";
+import Comment from "../components/Comment.astro";
+
+const comments = getAllComments();
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <script src="https://unpkg.com/htmx.org@1.9.4" is:inline></script>
+    <title>Astro</title>
+  </head>
+  <body>
+    <h1>Comments</h1>
+    <div id="comments">
+      {comments.map((comment) => <Comment comment={comment} />)}
+    </div>
+    <form
+      hx-post="/api/comments/submit"
+      hx-target="#comments"
+      hx-swap="beforeend"
+      hx-on::after-request="document.querySelector('#comment').value = ''"
+    >
+      <label for="author">Your name:</label>
+      <input type="text" name="author" id="author" required /><br />
+      <label for="comment">Comment:</label>
+      <input type="text" name="comment" id="comment" required /><br />
+      <button>Submit</button>
+    </form>
+  </body>
 </html>
