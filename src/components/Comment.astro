@@ -7,11 +7,16 @@ interface Props {
 const { comment } = Astro.props;
 ---
 
-<div class="comment">
+<div class="comment border bg-gray-200 p-1 my-2">
   <div>{comment.text}</div>
-  <div>{comment.author} - {comment.date.toLocaleString("no")}</div>
-  <button hx-delete={"/api/comments/" + comment.id} hx-target="closest .comment"
-    >Delete</button
-  >
-  <hr />
+  <div class="relative">{comment.author} - {comment.date.toLocaleString("no", {timeZone: "utc"})}
+    <button
+      hx-delete={"/api/comments/" + comment.id}
+      hx-target="closest .comment"
+      hx-swap="outerHTML"
+      class="bg-red-400 rounded right-1 absolute"
+    >
+    Delete
+    </button>
+  </div>
 </div>
