@@ -3,7 +3,7 @@ import { addComment } from "../../../comments";
 import Comment from "../../../components/Comment.astro";
 
 if (Astro.request.method !== "POST") {
-  return new Response("", {status: 404})
+  return new Response("", { status: 404 });
 }
 const formData = await Astro.request.formData();
 const text = formData.get("comment")?.toString();

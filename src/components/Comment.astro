@@ -9,14 +9,15 @@ const { comment } = Astro.props;
 
 <div class="comment border bg-gray-200 p-1 my-2 relative">
   <div>{comment.text}</div>
-  <span class="text-sm">{comment.author} - {comment.date.toLocaleString("no", {timeZone: "utc"})}</span>
+  <span class="text-sm">
+    {comment.author} - {comment.date.toLocaleString("no", { timeZone: "utc" })}
+  </span>
   <button
     hx-delete={"/api/comments/" + comment.id}
     hx-target="closest .comment"
     hx-swap="outerHTML"
     class="bg-red-400 rounded right-3 bottom-3 absolute hover:bg-red-600 border-black border-2"
   >
-  Delete
+    Delete
   </button>
 </div>
-  
