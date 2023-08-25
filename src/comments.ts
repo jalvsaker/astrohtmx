@@ -7,12 +7,15 @@ export interface Comment {
 
 let comments: Comment[] = [];
 
+let lastId = 0;
+
 export function removeCommentById(id: string) {
   comments = comments.filter((comment) => comment.id !== id);
 }
 
 export function addComment(comment: Comment) {
-  comment.id = comments.push(comment).toString();
+  comment.id = String(++lastId);
+  comments.push(comment).toString();
 }
 
 export function getAllComments(): Comment[] {
