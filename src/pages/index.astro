@@ -13,12 +13,12 @@ const comments = getAllComments();
     hx-target="#comments"
     hx-swap="beforeend"
     hx-on::after-request="document.querySelector('#comment').value = ''"
-    class="md:sticky top-0 z-10 bg-gray-400 p-2"
+    class="top-0 z-10 bg-gray-400 p-2 md:sticky"
   >
     <div class="grid md:grid-cols-7">
       <label for="author" class="grow-0">Your name:</label>
       <input
-        class="border col-span-6 p-1"
+        class="col-span-6 border p-1"
         type="text"
         name="author"
         id="author"
@@ -26,7 +26,7 @@ const comments = getAllComments();
       />
       <label for="comment" class="grow-0">Comment:</label>
       <input
-        class="border col-span-6 p-1"
+        class="col-span-6 border p-1"
         type="text"
         name="comment"
         id="comment"

@@ -7,12 +7,19 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "prettier": "prettier -w . --plugin=prettier-plugin-astro --plugin=prettier-plugin-tailwindcss",
+    "prettier:check": "prettier -c . --plugin=prettier-plugin-astro --plugin=prettier-plugin-tailwindcss"
   },
   "dependencies": {
     "@astrojs/tailwind": "^4.0.0",
     "@astrojs/vercel": "^3.8.2",
     "astro": "^2.10.13",
     "htmx.org": "^1.9.4"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.2",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.3"
   }
 }
