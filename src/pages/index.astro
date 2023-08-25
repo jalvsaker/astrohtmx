@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Comment from "../components/Comment.astro";
 import { getAllComments } from "../comments";
 
-const comments = getAllComments();
+const comments = await getAllComments();
 ---
 
 <BaseLayout>
