@@ -40,7 +40,7 @@ export async function addComment(comment: Comment) {
 
 export async function getAllComments(): Promise<Comment[]> {
   const rs = await client.execute(
-    "select rowid, name, comment, date from comments;"
+    "select rowid, name, comment, date from comments;",
   );
 
   const result = rs.rows.map((row) => {
