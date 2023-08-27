@@ -10,7 +10,11 @@ const { comment } = Astro.props;
 <div class="comment relative my-2 border bg-gray-200 p-1">
   <div>{comment.text}</div>
   <span class="text-sm">
-    {comment.author} - {comment.date.toLocaleString("no", { timeZone: "utc" })}
+    {comment.author} - {
+      comment.date.toLocaleString("no", {
+        timeZone: Astro.request.headers.get("x-vercel-ip-timezone") ?? "UTC",
+      })
+    }
   </span>
   <button
     hx-delete={"/api/comments/" + comment.id}
