@@ -12,7 +12,8 @@ const { comment } = Astro.props;
   <span class="text-sm">
     {comment.author} - {
       comment.date.toLocaleString("no", {
-        timeZone: Astro.request.headers.get("x-vercel-ip-timezone") ?? "UTC",
+        timeZone:
+          Astro.request.headers.get("x-vercel-ip-timezone") ?? undefined,
       })
     }
   </span>
