@@ -32,7 +32,7 @@ export async function addComment(comment: Comment) {
     args: {
       name: comment.author,
       text: comment.text,
-      date: comment.date.toUTCString(),
+      date: comment.date.toISOString(),
     },
   });
   comment.id = rs.lastInsertRowid?.toString();
